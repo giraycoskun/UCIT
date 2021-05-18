@@ -1,0 +1,7 @@
+out*
+__pycache__
+.vscode
+ucitObject
+*.pdfgit
+.DS_Store
+InputFiles
