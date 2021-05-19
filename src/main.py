@@ -8,12 +8,10 @@ sample_test_space = {
 
 sample_MCDC_test_space = {
 
-
-    "options":["o1", "o2"],
-    "functions": [ 
-        "o1&o2",
-        "o3|o4",
-        "()"
+    "options": ["o1", "o2"],
+    "functions": [
+        "(o1&o2)",
+        "(o3|o4)"
     ]
 }
 
