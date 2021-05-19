@@ -7,7 +7,6 @@ import copy
 
 class BoundaryValueTestSeviceClass:
     
-
     def __init__(self, request_name, test_space, single_fault=True, robust=False):
       self.input_filename = "./InputFiles/" + request_name + "_createBoundaryValueTestInput.inFile"
       self.test_space = test_space
@@ -16,7 +15,7 @@ class BoundaryValueTestSeviceClass:
 
     
     def getTestSet(self):
-        print("FUNCTION: getTestSet")
+        #print("FUNCTION: getTestSet")
 
         if(self.single_fault and (not self.robust)):
             self.createBoundaryValueTestInput()
@@ -35,7 +34,7 @@ class BoundaryValueTestSeviceClass:
         return self.__parseTestSet()
 
     def __parseTestSet(self):
-        print("FUNCTION: getTestCases")
+        #print("FUNCTION: getTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
@@ -61,7 +60,7 @@ class BoundaryValueTestSeviceClass:
         
 
     def createBoundaryValueTestInput(self):
-        print("FUNCTION: createBoundaryValueTestInput")
+        #print("FUNCTION: createBoundaryValueTestInput")
         parameterNum = 4*len(self.test_space.keys()) + 1
         self.__writeHeader(parameterNum)
 
@@ -92,7 +91,7 @@ class BoundaryValueTestSeviceClass:
         return True
 
     def createRobustBoundaryValueTestInput(self):
-        print("FUNCTION: createRobustBoundaryValueTestInput")
+        #print("FUNCTION: createRobustBoundaryValueTestInput")
         parameterNum = 6*len(self.test_space.keys()) + 1
         self.__writeHeader(parameterNum)
 
@@ -129,7 +128,7 @@ class BoundaryValueTestSeviceClass:
         return True
 
     def createWorstCaseBoundaryValueTestInput(self):
-        print("FUNCTION: createWorstCaseBoundaryValueTestInput")
+        #print("FUNCTION: createWorstCaseBoundaryValueTestInput")
 
         parameterNum = 6*len(self.test_space.keys()) + 1
         self.__writeHeader(parameterNum)
@@ -156,11 +155,8 @@ class BoundaryValueTestSeviceClass:
                 values[key] = value[1] - 1
                 self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
                 values[key] = value[0] - 1
-                self.__writeEntity(file, values, entityID+4, str(key)+" invalid lower than lower-bound")
-                values[key] = value[1] + 1
-                self.__writeEntity(file, values, entityID+5, str(key)+" invalid upper than upper-bound")
-                entityID += 6
-                
+                entityID += 4
+            
 
         self.__runSolver()
 

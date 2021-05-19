@@ -1,4 +1,5 @@
 import BoundaryValueTestSeviceClass as BVC
+import ModifiedBoundaryValueTestServiceClass as MBVC
 import MCDCTestServiceClass as MCDC
 import json
 
@@ -69,6 +70,7 @@ mcdc_test_cases = [
 test_space = mcdc_test_cases[-1]
 
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
+#testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
 testService = MCDC.MCDCTestServiceClass("cankut", test_space)
 result = testService.getTestSet()
