@@ -4,8 +4,8 @@ from satispy.solver import Minisat
 from random import randint
 
 def _solve(systemConstraints, entityConstraints):
-    print("SYSTEM: ", systemConstraints)
-    print("ENTITY: ",entityConstraints)
+    #print("SYSTEM: ", systemConstraints)
+    #print("ENTITY: ",entityConstraints)
     options = []
     for opt in systemConstraints:
         if not opt:
@@ -29,7 +29,7 @@ def _solve(systemConstraints, entityConstraints):
             randBool = bool(randint(0,1))
             testCase[opt] = "(" + opt + ")" if randBool else "(-" + opt + ")"
     solution = testCase.values() 
-    print("SOLUTION:", solution)
+    #print("SOLUTION:", solution)
     return solution
 
 

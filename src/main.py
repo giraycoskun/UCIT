@@ -1,4 +1,5 @@
 import BoundaryValueTestSeviceClass as BVC
+import json
 
 sample_test_space = {
     "time": [1, 4],
@@ -17,7 +18,16 @@ sample_MCDC_test_space = {
     ]
 }
 
+##
 testService = BVC.BoundaryValueTestSeviceClass("giray", sample_test_space)
 result = testService.getTestSet()
-
 print(result)
+with open('createBoundaryValueTestInput.json', 'w') as fp:
+    json.dump(result, fp)
+
+##
+testService = BVC.BoundaryValueTestSeviceClass("giray", sample_test_space, True, True)
+result = testService.getTestSet()
+print(result)
+with open('createRobustBoundaryValueTestInput.json', 'w') as fp:
+    json.dump(result, fp)

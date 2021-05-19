@@ -3,6 +3,7 @@ import json
 import subprocess
 from os import getcwd, walk
 from random import randint
+import copy
 
 class BoundaryValueTestSeviceClass:
     
@@ -16,8 +17,20 @@ class BoundaryValueTestSeviceClass:
     
     def getTestSet(self):
         print("FUNCTION: getTestSet")
+
         if(self.single_fault and (not self.robust)):
             self.createBoundaryValueTestInput()
+        elif(self.single_fault and self.robust):
+            self.createRobustBoundaryValueTestInput()
+        elif((not self.single_fault) and (not self.robust)):
+            self.createWorstCaseBoundaryValueTestInput()
+        elif((not self.single_fault) and self.robust):
+            self.createWorstCaseRobustBoundaryValueTestInput()
+        else:
+            return {
+                "Error":404
+            }
+
         
         return self.__getTestCases()
 
@@ -28,6 +41,7 @@ class BoundaryValueTestSeviceClass:
         test_cases = dict()
         for _, _, files in path:
             for file in files:
+                print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
                     check = False
@@ -46,7 +60,8 @@ class BoundaryValueTestSeviceClass:
 
     def createBoundaryValueTestInput(self):
         print("FUNCTION: createBoundaryValueTestInput")
-        self.__writeSingleFaultRanges()
+        parameterNum = 4*len(self.test_space.keys()) + 1
+        self.__writeSingleFaultRanges(parameterNum)
 
         with open(self.input_filename, 'a') as file:
 
@@ -54,34 +69,106 @@ class BoundaryValueTestSeviceClass:
 
             randomValues = dict()
             for key, value in self.test_space.items():
-                randomValues[key] = randint(value[0], value[1])
+                randomValues[key] = int((value[0] + value[1]) / 2)
 
             self.__writeEntity(file, randomValues, entityID, "regular")
             entityID += 1
             
             for key, value in self.test_space.items():
-                values = randomValues
+                values = copy.deepcopy(randomValues)
                 values[key] = value[0]
                 self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
                 values[key] = value[1]
                 self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
-                entityID += 2
+                values[key] = value[0] + 1
+                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                values[key] = value[1] - 1
+                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                entityID += 4
 
         self.__runSolver()
-        return dict()
+        return True
 
     def createRobustBoundaryValueTestInput(self):
         print("FUNCTION: createRobustBoundaryValueTestInput")
-        return dict()
+        parameterNum = 6*len(self.test_space.keys()) + 1
+        self.__writeSingleFaultRanges(parameterNum)
+
+        with open(self.input_filename, 'a') as file:
+
+            entityID = 1
+
+            randomValues = dict()
+            for key, value in self.test_space.items():
+                randomValues[key] = int((value[0] + value[1]) / 2)
+
+            self.__writeEntity(file, randomValues, entityID, "regular")
+            entityID += 1
+            
+            for key, value in self.test_space.items():
+                values = copy.deepcopy(randomValues)
+                values[key] = value[0]
+                self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
+                values[key] = value[1]
+                self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
+                values[key] = value[0] + 1
+                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                values[key] = value[1] - 1
+                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                values[key] = value[0] - 1
+                self.__writeEntity(file, values, entityID+4, str(key)+" invalid lower than lower-bound")
+                values[key] = value[1] + 1
+                self.__writeEntity(file, values, entityID+5, str(key)+" invalid upper than upper-bound")
+                entityID += 6
+                
+
+        self.__runSolver()
+
+        return True
 
     def createWorstCaseBoundaryValueTestInput(self):
-        pass
+        print("FUNCTION: createWorstCaseBoundaryValueTestInput")
+
+        parameterNum = 6*len(self.test_space.keys()) + 1
+        self.__writeSingleFaultRanges(parameterNum)
+
+        with open(self.input_filename, 'a') as file:
+
+            entityID = 1
+
+            randomValues = dict()
+            for key, value in self.test_space.items():
+                randomValues[key] = int((value[0] + value[1]) / 2)
+
+            self.__writeEntity(file, randomValues, entityID, "regular")
+            entityID += 1
+            
+            for key, value in self.test_space.items():
+                values = copy.deepcopy(randomValues)
+                values[key] = value[0]
+                self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
+                values[key] = value[1]
+                self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
+                values[key] = value[0] + 1
+                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                values[key] = value[1] - 1
+                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                values[key] = value[0] - 1
+                self.__writeEntity(file, values, entityID+4, str(key)+" invalid lower than lower-bound")
+                values[key] = value[1] + 1
+                self.__writeEntity(file, values, entityID+5, str(key)+" invalid upper than upper-bound")
+                entityID += 6
+                
+
+        self.__runSolver()
+
+        return True
 
     def createWorstCaseRobustBoundaryValueTestInput(self):
+        print("FUNCTION: createWorstCaseRobustBoundaryValueTestInput")
         pass
 
-    def __writeSingleFaultRanges(self):
-        parameterNum = len(self.test_space.keys())*2 + 1
+    def __writeSingleFaultRanges(self, parameterNum):
         with open(self.input_filename, 'w') as file:
 
             file.write("# NUMBER_OF_ENTITIES:{parameterNumber}\n".format(parameterNumber = parameterNum))

@@ -26,11 +26,3 @@ def _solve(systemConstraints, entityConstraints):
 
 def _satisfiable(systemConstraints, entityConstraints):
     return _solve(systemConstraints, entityConstraints) != []
-
-
-
-
-
-
-
-        
