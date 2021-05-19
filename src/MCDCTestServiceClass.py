@@ -61,8 +61,13 @@ class MCDCTestServiceClass:
             for option in options:
                 # (option) & (function)
                 # (-option) & (-function)
-                pos_entity = '(' + option + ')&' + func_str
-                neg_entity = '(-' + option + ')&(-' + func_str + ')'
+                neg_func = func_str.replace(option, ('-'+option))
+                pos_func = func_str
+                bool_diff = '('+'('+pos_func+'&'+'('+ '-' + neg_func +')'+')'+'|'+ '('+ '('+ '-'+pos_func +')' '&'+ neg_func +')'+')'
+                pos_entity = pos_func + '&' + '(' + '-' + neg_func + ')' + '&' + bool_diff
+                neg_entity = '('+'-'+pos_func+')' + '&' + neg_func + '&' + bool_diff
+                #pos_entity = '(' + option + ')&' + func_str
+                #neg_entity = '(-' + option + ')&(-' + func_str + ')'
                 self.entities.append(pos_entity)
                 self.entities.append(neg_entity)
 
@@ -107,6 +112,30 @@ sample_MCDC_test_space = {
     "options": ["o1", "o2", "o3"],
     "functions": [
         "(o1|(o2&o3))"
+    ]
+}
+
+sample_MCDC_test_space = {
+
+    "options": ["o1"],
+    "functions": [
+        "(o1)"
+    ]
+}
+
+sample_MCDC_test_space = {
+
+    "options": ["o1", "o2"],
+    "functions": [
+        "(o1&o2)"
+    ]
+}
+
+sample_MCDC_test_space = {
+
+    "options": ["o1", "o2"],
+    "functions": [
+        "(o1|o2)"
     ]
 }
 
