@@ -6,6 +6,17 @@ sample_test_space = {
     "year": [-4, 105]
 }
 
+sample_MCDC_test_space = {
+
+
+    "options":["o1", "o2"],
+    "functions": [ 
+        "o1&o2",
+        "o3|o4",
+        "()"
+    ]
+}
+
 testService = BVC.BoundaryValueTestSeviceClass("giray", sample_test_space)
 result = testService.getTestSet()
 
