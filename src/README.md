@@ -14,6 +14,8 @@ cankutcoskun - cankutcoskun@sabanciuniv.edu
 
 ### F-CIT for Boundary Value Testing
 
+### F-CIT for Modified Boundary Value Testing
+
 ### F-CIT for Masking-MCDC
 
 ## Usage
