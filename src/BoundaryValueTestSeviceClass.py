@@ -32,20 +32,22 @@ class BoundaryValueTestSeviceClass:
             }
 
         
-        return self.__getTestCases()
+        return self.__parseTestSet()
 
-    def __getTestCases(self):
+    def __parseTestSet(self):
         print("FUNCTION: getTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
         for _, _, files in path:
+            count = 1
             for file in files:
-                print(file)
+                #print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
                     check = False
-                    key = lines[0].strip()
+                    key = "TEST CASE: "+ str(count)
+                    count += 1
                     test_cases[key] = {}
                     for line in lines:
                         if check:
@@ -61,7 +63,7 @@ class BoundaryValueTestSeviceClass:
     def createBoundaryValueTestInput(self):
         print("FUNCTION: createBoundaryValueTestInput")
         parameterNum = 4*len(self.test_space.keys()) + 1
-        self.__writeSingleFaultRanges(parameterNum)
+        self.__writeHeader(parameterNum)
 
         with open(self.input_filename, 'a') as file:
 
@@ -92,7 +94,7 @@ class BoundaryValueTestSeviceClass:
     def createRobustBoundaryValueTestInput(self):
         print("FUNCTION: createRobustBoundaryValueTestInput")
         parameterNum = 6*len(self.test_space.keys()) + 1
-        self.__writeSingleFaultRanges(parameterNum)
+        self.__writeHeader(parameterNum)
 
         with open(self.input_filename, 'a') as file:
 
@@ -130,7 +132,7 @@ class BoundaryValueTestSeviceClass:
         print("FUNCTION: createWorstCaseBoundaryValueTestInput")
 
         parameterNum = 6*len(self.test_space.keys()) + 1
-        self.__writeSingleFaultRanges(parameterNum)
+        self.__writeHeader(parameterNum)
 
         with open(self.input_filename, 'a') as file:
 
@@ -168,7 +170,7 @@ class BoundaryValueTestSeviceClass:
         print("FUNCTION: createWorstCaseRobustBoundaryValueTestInput")
         pass
 
-    def __writeSingleFaultRanges(self, parameterNum):
+    def __writeHeader(self, parameterNum):
         with open(self.input_filename, 'w') as file:
 
             file.write("# NUMBER_OF_ENTITIES:{parameterNumber}\n".format(parameterNumber = parameterNum))
@@ -193,6 +195,10 @@ class BoundaryValueTestSeviceClass:
 
     def __runSolver(self):
         #"python main.pyc -m 1 -s solverUsageBased -i ./sampleInputFiles/usageBasedStudy.inFile"
+        #python main.pyc -m 1 -s solverUsageBased -i ./sampleInputFiles/usageBasedStudy.inFile
+        #python main.pyc -m 1 -s solverOrderBased -i ./sampleInputFiles/orderBaseStudy.inFile
+        #python main.pyc -m 1 -s solverStructureBased -i ./sampleInputFiles/structureBaseStudy.inFile
+        #python main.pyc -m 1 -s solverStructureBased -i ./InputFiles/test-structure.inFile
         command = ["python", "main.pyc", "-m", "1", "-s", "solverUsageBased", "-i", self.input_filename]
         process = subprocess.run(command, stdout=subprocess.PIPE)
         return process.returncode

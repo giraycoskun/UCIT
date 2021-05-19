@@ -22,34 +22,40 @@ class MCDCTestServiceClass:
         self.matcher = re.compile("[^\(\)\&\|-]+")
 
     def getTestSet(self):
-        print("FUNCTION: getTestSet")
+        #print("FUNCTION: getTestSet")
 
         self.createTestSet()
         return self.__parseTestSet()
 
     # Parser
     def __parseTestSet(self):
-        print("FUNCTION: __parseTestSet")
+        #print("FUNCTION: getTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
         for _, _, files in path:
+            count = 1
             for file in files:
+                #print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
                     check = False
-                    key = lines[0].strip()
+                    key = "TEST CASE: "+ str(count)
+                    count += 1
                     test_cases[key] = {}
                     for line in lines:
                         if check:
-                            line = line.split('=')
-                            test_cases[key][line[0]] = int(line[1])
+                            option = self.matcher.search(line).group(0)
+                            if('-' in line):
+                                test_cases[key][option] = False
+                            else:
+                                test_cases[key][option] = True
                         if (not check) and line == "# TEST CASE CONSTRAINTS\n":
                             check = True
         return test_cases
 
     def createTestSet(self):
-        print("FUNCTION: createTestSet")
+        #print("FUNCTION: createTestSet")
         self.createEntites()
         self.createInputFile()
         self.__runSolver()
@@ -59,15 +65,12 @@ class MCDCTestServiceClass:
         for func_str in self.test_space['functions']:
             options = self.matcher.findall(func_str)
             for option in options:
-                # (option) & (function)
-                # (-option) & (-function)
                 neg_func = func_str.replace(option, ('-'+option))
                 pos_func = func_str
                 bool_diff = '('+'('+pos_func+'&'+'('+ '-' + neg_func +')'+')'+'|'+ '('+ '('+ '-'+pos_func +')' '&'+ neg_func +')'+')'
                 pos_entity = pos_func + '&' + '(' + '-' + neg_func + ')' + '&' + bool_diff
                 neg_entity = '('+'-'+pos_func+')' + '&' + neg_func + '&' + bool_diff
-                #pos_entity = '(' + option + ')&' + func_str
-                #neg_entity = '(-' + option + ')&(-' + func_str + ')'
+
                 self.entities.append(pos_entity)
                 self.entities.append(neg_entity)
 
@@ -136,6 +139,23 @@ sample_MCDC_test_space = {
     "options": ["o1", "o2"],
     "functions": [
         "(o1|o2)"
+    ]
+}
+
+sample_MCDC_test_space = {
+
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1&o2&o3)"
+    ]
+}
+
+sample_MCDC_test_space = {
+
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1&o2&o3)",
+        "(o1|(o2&o3))"
     ]
 }
 

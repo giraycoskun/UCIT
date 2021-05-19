@@ -2,6 +2,7 @@ out*
 __pycache__
 .vscode
 ucitObject
-*.pdfgit
+*.pdf
 .DS_Store
 InputFiles
+temp

@@ -1,32 +1,77 @@
 import BoundaryValueTestSeviceClass as BVC
+import MCDCTestServiceClass as MCDC
 import json
 
-sample_test_space = {
-    "time": [1, 4],
-    "day": [-4, 105],
-    "year": [-4, 105]
-}
+boundary_test_case = {
+        "time": [1, 4],
+        "day": [-4, 105],
+        "year": [-4, 105]
+    }
 
-sample_MCDC_test_space = {
-
-    "options": ["o1", "o2"],
+mcdc_test_cases = [
+{
+    "options": ["o1", "o2","o3","o4"],
     "functions": [
         "(o1&o2)",
         "(o3|o4)"
     ]
-}
+},
+{
 
-##
-testService = BVC.BoundaryValueTestSeviceClass("giray", sample_test_space)
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1|(o2&o3))"
+    ]
+},
+
+{
+
+    "options": ["o1"],
+    "functions": [
+        "(o1)"
+    ]
+},
+
+{
+
+    "options": ["o1", "o2"],
+    "functions": [
+        "(o1&o2)"
+    ]
+},
+
+{
+
+    "options": ["o1", "o2"],
+    "functions": [
+        "(o1|o2)"
+    ]
+},
+
+{
+
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1&o2&o3)"
+    ]
+},
+
+{
+
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1&o2&o3)",
+        "(o1|(o2&o3))"
+    ]
+}   
+]
+
+test_space = mcdc_test_cases[-1]
+
+#testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
+#testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
+testService = MCDC.MCDCTestServiceClass("cankut", test_space)
 result = testService.getTestSet()
 print(result)
-with open('createBoundaryValueTestInput.json', 'w') as fp:
+with open('./src/result.json', 'w') as fp:
     json.dump(result, fp)
-
-##
-testService = BVC.BoundaryValueTestSeviceClass("giray", sample_test_space, True, True)
-result = testService.getTestSet()
-print(result)
-with open('createRobustBoundaryValueTestInput.json', 'w') as fp:
-    json.dump(result, fp)
-print(result)
