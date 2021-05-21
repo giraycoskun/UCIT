@@ -67,7 +67,13 @@ mcdc_test_cases = [
 }   
 ]
 
-test_space = mcdc_test_cases[-1]
+test_space = {
+
+    "options": ["o1", "o2", "o3"],
+    "functions": [
+        "(o1|(o2&o3))"
+    ]
+}
 
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
