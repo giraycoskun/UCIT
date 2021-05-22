@@ -1,6 +1,7 @@
 import BoundaryValueTestSeviceClass as BVC
 import ModifiedBoundaryValueTestServiceClass as MBVC
 import MCDCTestServiceClass as MCDC
+from helper import Conversion
 import json
 
 boundary_test_case = {

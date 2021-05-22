@@ -1,7 +1,10 @@
+(int abc 1 10)
+(bool o1)
+(bool o2)
+(bool o3)
 
-(bool p1)
-(bool p2)
 
-
-(and p1 p2)
-(alldifferent (p1 p2))
+&&||o1&&o2o3!||o1&&!o2o3
+(= abc 2)
+&&||o1&&o2o3!||!o1&&o2o3
+(= abc 1)
