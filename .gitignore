@@ -4,5 +4,4 @@ __pycache__
 ucitObject
 *.pdf
 .DS_Store
-InputFiles
 temp

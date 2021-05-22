@@ -36,6 +36,8 @@ Both constructued with a unique request name and test space.
 
 - https://cspsat.gitlab.io/sugar/package/current/docs/syntax.html
 
+- https://cspsat.gitlab.io/sugar/
+
 - http://www.cril.univ-artois.fr/CPAI06/descriptionSolvers/Sugar.pdf
 
 - Hayhurst Kelly J., Veerhusen Dan S., Chilenski John J., and Rierson Leanna K. 2001. A Practical Tutorial on Modified Condition/Decision Coverage. Technical Report. NASA Langley Technical Report Server.

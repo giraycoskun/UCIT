@@ -1,0 +1,14 @@
+# NUMBER_OF_ENTITIES:1
+# SYSTEM_CONSTRAINTS_BEGIN
+
+(bool p1)
+(bool p2)
+
+# SYSTEM_CONSTRAINTS_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:1
+# ENTITY_DESCRIPTION:Entity to cover in 'any' manner:  M5_S2_6 M5_S3 M5_S3_2
+(= p1 true)
+# ENTITY_END
+

@@ -48,16 +48,16 @@ class Conversion:
             #print(character)
             if character.isalnum():
                 output += character
-            elif character in self.OPERATORS or character == '(':
-                #if(character == '('):
-                 #       output += '('
-                while (len(self.STACK) > 0 and self.STACK[-1] != "(" and self.PRIORITY[self.STACK[-1]] >= self.PRIORITY[character]):
+            elif character == '(':
+                self.STACK.append('(')
+            elif character in self.OPERATORS:
+                while (len(self.STACK) > 0 and self.PRIORITY[self.STACK[-1]] >= self.PRIORITY[character]):
                     output += self.STACK.pop()
                 self.STACK.append(character)
-            elif character is ")":
+            elif character is ')':
             # if character is ')'
             #   then pop until '('.
-                while self.STACK[-1] != "(":
+                while self.STACK[-1] != '(':
                     output += self.STACK.pop()
                 self.STACK.pop()
                 #output += ')'
