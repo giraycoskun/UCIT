@@ -1,10 +1,7 @@
-(int parameterID 1 10)
-(bool o1)
-(bool o2)
-(bool o3)
+(bool a)
+(bool b)
+(bool c)
+(bool d)
 
 
-&& || o1 && o2 o3 ! || o1 && ! o2 o3
-= parameterID 2
-&& || o1 && o2 o3 ! || ! o1 && o2 o3
-= parameterID 1
+(|| (&& (&& a b )c )d )

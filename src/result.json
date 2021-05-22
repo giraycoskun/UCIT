@@ -1,1 +1,22 @@
-{"TEST CASE: 1": {"o3": false, "o2": false, "o1": true}, "TEST CASE: 2": {"o3": true, "o2": false, "o1": false}, "TEST CASE: 3": {"o3": true, "o2": true, "o1": false}, "TEST CASE: 4": {"o3": false, "o2": true, "o1": false}}
+{
+    "TEST CASE: 1": {
+        "o3": false,
+        "o2": false,
+        "o1": true
+    },
+    "TEST CASE: 2": {
+        "o3": true,
+        "o2": false,
+        "o1": false
+    },
+    "TEST CASE: 3": {
+        "o3": true,
+        "o2": true,
+        "o1": false
+    },
+    "TEST CASE: 4": {
+        "o3": false,
+        "o2": true,
+        "o1": false
+    }
+}

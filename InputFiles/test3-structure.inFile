@@ -1,9 +1,9 @@
-# NUMBER_OF_ENTITIES:2
+# NUMBER_OF_ENTITIES:1
 # SYSTEM_CONSTRAINTS_BEGIN
-(int parameterID 1 10)
-(bool o1)
-(bool o2)
-(bool o3)
+(bool a)
+(bool b)
+(bool c)
+(bool d)
 
 # SYSTEM_CONSTRAINTS_END
 
@@ -12,13 +12,5 @@
 # ENTITY_BEGIN
 # ENTITY_ID:0
 # ENTITY_DESCRIPTION: Covering (o1|(o2&o3))&(!(!o1|(o2&o3)))&(((o1|(o2&o3))&(!(!o1|(o2&o3))))|((!(o1|(o2&o3)))&(!o1|(o2&o3))))
-(&& (|| o1 (&& o2 o3)) (! (|| (! o1) (&& o2 o3))))
-(= parameterID 1)
-# ENTITY_END
-
-# ENTITY_BEGIN
-# ENTITY_ID:1
-# ENTITY_DESCRIPTION: Covering (o1|(o2&o3))&(!(!o1|(o2&o3)))&(((o1|(o2&o3))&(!(!o1|(o2&o3))))|((!(o1|(o2&o3)))&(!o1|(o2&o3))))
-(&& (|| o1 (&& o2 o3)) (! (|| o1 (&& (! o2) o3))))
-(= parameterID 2)
+(|| (&& (&& a b )c )d )
 # ENTITY_END
