@@ -111,6 +111,7 @@ class Conversion:
     
     def format(self, formula, elements):
 
+        formula = formula.replace('-(', '(-')
         for operator in self.OPERATORS:
             formula = formula.replace(operator, (operator+ ' '))
         for element in elements:
@@ -132,6 +133,13 @@ class Conversion:
         matcher = re.compile(pattern)
         #print(matcher.search("+a+b+cd"))
         return matcher
+    
+    def formatSugarOps(self, formula):
+        formula = formula.replace('&', '&&')
+        formula = formula.replace('|', '||')
+        formula = formula.replace('-', '!')
+        return formula
+
 
 if __name__ == '__main__':
 
@@ -144,8 +152,10 @@ if __name__ == '__main__':
         ')':0
     }
 
-    formula = "a&b&c|d"
-    formula2 = "(a|b)&c"
+    formula = "a|(b&c)"
+    formula2 = "a|(b&-c)"
+    formula3 = "-a|(b&c)"
+    formula4 = "a|-(b&c)"
 
     C = Conversion(OPERATORS, PRIORITY)
     C.infix_2_prefix(formula2)

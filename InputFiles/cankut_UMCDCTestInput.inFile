@@ -1,0 +1,56 @@
+# NUMBER_OF_ENTITIES:6
+# SYSTEM_CONSTRAINTS_BEGIN
+(int optionID 0 6 )
+(bool o1)
+(bool o2)
+(bool o3)
+# SYSTEM_CONSTRAINTS_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:0
+# ENTITY_DESCRIPTION: Covering (&& (&& o1 o2 )o3 )
+ ( = optionID 0)
+(&& (&& o1 o2 )o3 )
+ ( = optionID 0)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:1
+# ENTITY_DESCRIPTION: Covering (&& (&& o1 o2 )o3 )
+ ( = optionID 1)
+(&& (&& o1 o2 )o3 )
+ ( = optionID 1)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:2
+# ENTITY_DESCRIPTION: Covering (&& (&& o1 o2 )o3 )
+ ( = optionID 2)
+(&& (&& o1 o2 )o3 )
+ ( = optionID 2)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:3
+# ENTITY_DESCRIPTION: Covering (|| o1 (&& o2 o3 ))
+ ( = optionID 0)
+(|| o1 (&& o2 o3 ))
+ ( = optionID 0)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:4
+# ENTITY_DESCRIPTION: Covering (|| o1 (&& o2 o3 ))
+ ( = optionID 1)
+(|| o1 (&& o2 o3 ))
+ ( = optionID 1)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:5
+# ENTITY_DESCRIPTION: Covering (|| o1 (&& o2 o3 ))
+ ( = optionID 2)
+(|| o1 (&& o2 o3 ))
+ ( = optionID 2)
+# ENTITY_END
+

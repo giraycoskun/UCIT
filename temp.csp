@@ -1,7 +1,7 @@
-(bool a)
-(bool b)
-(bool c)
-(bool d)
+(int optionID 0 3 )
+(bool o1)
+(bool o2)
+(bool o3)
 
-
-(|| (&& (&& a b )c )d )
+( && (|| o1 (&& o2 o3 )) (! (|| (! o1 )(&& o2 o3 ))) )
+( = optionID 0)

@@ -1,7 +1,7 @@
 import BoundaryValueTestSeviceClass as BVC
 import ModifiedBoundaryValueTestServiceClass as MBVC
 import MCDCTestServiceClass as MCDC
-from helper import Conversion
+import UCMCDCTestServiceClass as UCMCDC
 import json
 
 boundary_test_case = {
@@ -79,7 +79,8 @@ test_space = {
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
-testService = MCDC.MCDCTestServiceClass("cankut", test_space)
+#testService = MCDC.MCDCTestServiceClass("cankut", test_space)
+testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
 result = testService.getTestSet()
 print(result)
 with open('./src/result.json', 'w') as fp:
