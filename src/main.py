@@ -2,6 +2,7 @@ import BoundaryValueTestSeviceClass as BVC
 import ModifiedBoundaryValueTestServiceClass as MBVC
 import MCDCTestServiceClass as MCDC
 import UCMCDCTestServiceClass as UCMCDC
+import ConditionTestServiceClass as ConditionTestClass
 
 import json
 
@@ -77,11 +78,27 @@ test_space = {
     ]
 }
 
+condition_test_space = {
+        "conditions":[
+            "(a<b)|(c<d)&!x",
+        ],
+
+        "numbers": {
+            "a":[1, 20],
+            "b":[1, 100],
+            "c":[1, 20],
+            "d":[1, 100]
+        }
+        ,
+        "options": ['x', 'y']
+    }
+
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
 #testService = MCDC.MCDCTestServiceClass("cankut", test_space)
-testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
+#testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
+testService = ConditionTestClass.ConditionTestServiceClass("giray", condition_test_space)
 result = testService.getTestSet()
 print(result)
 with open('./src/result.json', 'w') as fp:

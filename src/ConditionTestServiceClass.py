@@ -39,7 +39,7 @@ class ConditionTestServiceClass:
     def __generateUCMCDCTestOutput(self, lines):
         #print("FUNCTION: __generateUCMCDCTestOutputestSet")
         test = dict()
-        for line in lines[1:]:
+        for line in lines:
             parsed = line.split()
             option = parsed[2]
             value = parsed[3][:-1]
@@ -52,12 +52,11 @@ class ConditionTestServiceClass:
 
         return test
     
-    def parseTestSet(self):
+    def __parseTestSet(self):
         print("FUNCTION: parseTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
-        test_set = set()
         for _, _, files in path:
             count = 1
             for file in files:
