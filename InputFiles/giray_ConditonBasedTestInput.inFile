@@ -1,6 +1,5 @@
-# NUMBER_OF_ENTITIES:3
+# NUMBER_OF_ENTITIES:6
 # SYSTEM_CONSTRAINTS_BEGIN
-(int optionID 0 3 )
 (bool x)
 (bool y)
 (int a 1 20 )
@@ -13,20 +12,35 @@
 # ENTITY_ID:0
 # ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (! (< a b ))(&& (< c d )(! x )))) )
 ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (! (< a b ))(&& (< c d )(! x )))) )
-( = optionID 0)
 # ENTITY_END
 
 # ENTITY_BEGIN
 # ENTITY_ID:1
-# ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
-( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
-( = optionID 1)
+# ENTITY_DESCRIPTION: Covering ( && (|| (! (< a b ))(&& (< c d )(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
+( && (|| (! (< a b ))(&& (< c d )(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
 # ENTITY_END
 
 # ENTITY_BEGIN
 # ENTITY_ID:2
 # ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
 ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
-( = optionID 2)
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:3
+# ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (! (< c d ))(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
+( && (|| (< a b )(&& (! (< c d ))(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:4
+# ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
+( && (|| (< a b )(&& (< c d )(! x ))) (! (|| (< a b )(&& (! (< c d ))(! x )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:5
+# ENTITY_DESCRIPTION: Covering ( && (|| (< a b )(&& (! (< c d ))(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
+( && (|| (< a b )(&& (! (< c d ))(! x ))) (! (|| (< a b )(&& (< c d )(! x )))) )
 # ENTITY_END
 

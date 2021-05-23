@@ -1,14 +1,25 @@
-# NUMBER_OF_ENTITIES:1
+# NUMBER_OF_ENTITIES:2
 # SYSTEM_CONSTRAINTS_BEGIN
 
-(bool p1)
-(bool p2)
+(int a 1 100)
+(int b 100 200)
+(int c 0 2)
+
 
 # SYSTEM_CONSTRAINTS_END
 
 # ENTITY_BEGIN
 # ENTITY_ID:1
-# ENTITY_DESCRIPTION:Entity to cover in 'any' manner:  M5_S2_6 M5_S3 M5_S3_2
-(= p1 true)
+# ENTITY_DESCRIPTION: 
+(= c 0)
 # ENTITY_END
 
+# ENTITY_BEGIN
+# ENTITY_ID:1
+# ENTITY_DESCRIPTION: 
+(! (< a b))
+(= c 1)
+# ENTITY_END
+
+
+#python main.pyc -m 1 -s solverOrderBased -i InputFiles/test-orderBased.inFile
