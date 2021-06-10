@@ -1,35 +1,27 @@
 {
     "TEST CASE: 1": {
-        "a": 18,
-        "b": 8,
-        "c": 20,
-        "d": 20,
-        "e": 8,
-        "x": false,
-        "y": false,
-        "o1": true,
-        "o2": true
+        "o1": false,
+        "o2": true,
+        "o3": true
     },
     "TEST CASE: 2": {
-        "a": 5,
-        "b": 55,
-        "c": 10,
-        "d": 85,
-        "e": 17,
-        "x": true,
-        "y": false,
-        "o1": true,
-        "o2": false
+        "o1": false,
+        "o2": false,
+        "o3": true
     },
     "TEST CASE: 3": {
-        "a": 17,
-        "b": 4,
-        "c": 9,
-        "d": 58,
-        "e": 8,
-        "x": false,
-        "y": false,
         "o1": false,
-        "o2": true
+        "o2": true,
+        "o3": false
+    },
+    "TEST CASE: 4": {
+        "o1": true,
+        "o2": false,
+        "o3": false
+    },
+    "TEST CASE: 5": {
+        "o1": false,
+        "o2": false,
+        "o3": false
     }
 }

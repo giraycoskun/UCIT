@@ -97,10 +97,10 @@ condition_test_space = {
     }
 
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
-testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
+#testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
 #testService = MCDC.MCDCTestServiceClass("cankut", test_space)
-#testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
+testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
 #testService = ConditionTestClass.ConditionTestServiceClass("giray", condition_test_space)
 result = testService.getTestSet()
 print(result)
