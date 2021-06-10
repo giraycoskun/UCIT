@@ -79,26 +79,29 @@ test_space = {
 }
 
 condition_test_space = {
+    
         "conditions":[
-            "(a<b)|(c<d)&!x",
+            "(a<b+e)|(c<d)&!x",
+            "o1&o2"
         ],
 
         "numbers": {
             "a":[1, 20],
             "b":[1, 100],
             "c":[1, 20],
-            "d":[1, 100]
+            "d":[1, 100],
+            "e":[1, 100]
         }
         ,
-        "options": ['x', 'y']
+        "options": ['x', 'y', 'o1', 'o2']
     }
 
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case)
-#testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
+testService = MBVC.ModifiedBoundaryValueTestSeviceClass("giray", boundary_test_case)
 #testService = BVC.BoundaryValueTestSeviceClass("giray", boundary_test_case, True, True)
 #testService = MCDC.MCDCTestServiceClass("cankut", test_space)
 #testService = UCMCDC.UCMCDCTestServiceClass("Giray", test_space)
-testService = ConditionTestClass.ConditionTestServiceClass("giray", condition_test_space)
+#testService = ConditionTestClass.ConditionTestServiceClass("giray", condition_test_space)
 result = testService.getTestSet()
 print(result)
 with open('./src/result.json', 'w') as fp:
