@@ -1,19 +1,19 @@
-from typing import no_type_check_decorator
 import json
 import subprocess
 from os import getcwd, walk
 from random import randint
 import copy
 
-class BoundaryValueTestSeviceClass:
-    
-    def __init__(self, request_name, test_space, single_fault=True, robust=False):
-      self.input_filename = "./InputFiles/" + request_name + "_createBoundaryValueTestInput.inFile"
-      self.test_space = test_space
-      self.single_fault = single_fault
-      self.robust = robust
 
-    
+class BoundaryValueTestSeviceClass:
+
+    def __init__(self, request_name, test_space, single_fault=True, robust=False):
+        self.input_filename = "./InputFiles/" + request_name + \
+            "_createBoundaryValueTestInput.inFile"
+        self.test_space = test_space
+        self.single_fault = single_fault
+        self.robust = robust
+
     def getTestSet(self):
         #print("FUNCTION: getTestSet")
 
@@ -27,10 +27,9 @@ class BoundaryValueTestSeviceClass:
             self.createWorstCaseRobustBoundaryValueTestInput()
         else:
             return {
-                "Error":404
+                "Error": 404
             }
 
-        
         return self.__parseTestSet()
 
     def __parseTestSet(self):
@@ -41,11 +40,11 @@ class BoundaryValueTestSeviceClass:
         for _, _, files in path:
             count = 1
             for file in files:
-                #print(file)
+                # print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
                     check = False
-                    key = "TEST CASE: "+ str(count)
+                    key = "TEST CASE: " + str(count)
                     count += 1
                     test_cases[key] = {}
                     for line in lines:
@@ -55,9 +54,6 @@ class BoundaryValueTestSeviceClass:
                         if (not check) and line == "# TEST CASE CONSTRAINTS\n":
                             check = True
         return test_cases
-                        
-
-        
 
     def createBoundaryValueTestInput(self):
         #print("FUNCTION: createBoundaryValueTestInput")
@@ -74,17 +70,21 @@ class BoundaryValueTestSeviceClass:
 
             self.__writeEntity(file, randomValues, entityID, "regular")
             entityID += 1
-            
+
             for key, value in self.test_space.items():
                 values = copy.deepcopy(randomValues)
                 values[key] = value[0]
-                self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
+                self.__writeEntity(file, values, entityID,
+                                   str(key)+" lower-bound")
                 values[key] = value[1]
-                self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
+                self.__writeEntity(file, values, entityID+1,
+                                   str(key)+" upper-bound")
                 values[key] = value[0] + 1
-                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                self.__writeEntity(file, values, entityID+2,
+                                   str(key)+" upper than lower-bound")
                 values[key] = value[1] - 1
-                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                self.__writeEntity(file, values, entityID+3,
+                                   str(key)+" lower than upper-bound")
                 entityID += 4
 
         self.__runSolver()
@@ -105,23 +105,28 @@ class BoundaryValueTestSeviceClass:
 
             self.__writeEntity(file, randomValues, entityID, "regular")
             entityID += 1
-            
+
             for key, value in self.test_space.items():
                 values = copy.deepcopy(randomValues)
                 values[key] = value[0]
-                self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
+                self.__writeEntity(file, values, entityID,
+                                   str(key)+" lower-bound")
                 values[key] = value[1]
-                self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
+                self.__writeEntity(file, values, entityID+1,
+                                   str(key)+" upper-bound")
                 values[key] = value[0] + 1
-                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                self.__writeEntity(file, values, entityID+2,
+                                   str(key)+" upper than lower-bound")
                 values[key] = value[1] - 1
-                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                self.__writeEntity(file, values, entityID+3,
+                                   str(key)+" lower than upper-bound")
                 values[key] = value[0] - 1
-                self.__writeEntity(file, values, entityID+4, str(key)+" invalid lower than lower-bound")
+                self.__writeEntity(file, values, entityID+4,
+                                   str(key)+" invalid lower than lower-bound")
                 values[key] = value[1] + 1
-                self.__writeEntity(file, values, entityID+5, str(key)+" invalid upper than upper-bound")
+                self.__writeEntity(file, values, entityID+5,
+                                   str(key)+" invalid upper than upper-bound")
                 entityID += 6
-                
 
         self.__runSolver()
 
@@ -143,20 +148,23 @@ class BoundaryValueTestSeviceClass:
 
             self.__writeEntity(file, randomValues, entityID, "regular")
             entityID += 1
-            
+
             for key, value in self.test_space.items():
                 values = copy.deepcopy(randomValues)
                 values[key] = value[0]
-                self.__writeEntity(file, values, entityID, str(key)+" lower-bound")
+                self.__writeEntity(file, values, entityID,
+                                   str(key)+" lower-bound")
                 values[key] = value[1]
-                self.__writeEntity(file, values, entityID+1, str(key)+" upper-bound")
+                self.__writeEntity(file, values, entityID+1,
+                                   str(key)+" upper-bound")
                 values[key] = value[0] + 1
-                self.__writeEntity(file, values, entityID+2, str(key)+" upper than lower-bound")
+                self.__writeEntity(file, values, entityID+2,
+                                   str(key)+" upper than lower-bound")
                 values[key] = value[1] - 1
-                self.__writeEntity(file, values, entityID+3, str(key)+" lower than upper-bound")
+                self.__writeEntity(file, values, entityID+3,
+                                   str(key)+" lower than upper-bound")
                 values[key] = value[0] - 1
                 entityID += 4
-            
 
         self.__runSolver()
 
@@ -169,11 +177,13 @@ class BoundaryValueTestSeviceClass:
     def __writeHeader(self, parameterNum):
         with open(self.input_filename, 'w') as file:
 
-            file.write("# NUMBER_OF_ENTITIES:{parameterNumber}\n".format(parameterNumber = parameterNum))
+            file.write("# NUMBER_OF_ENTITIES:{parameterNumber}\n".format(
+                parameterNumber=parameterNum))
             file.write("# SYSTEM_CONSTRAINTS_BEGIN\n")
 
             for key, value in self.test_space.items():
-                file.write("{pNum} {lower} {upper}\n".format(pNum=key, lower=value[0], upper=value[1]))
+                file.write("{pNum} {lower} {upper}\n".format(
+                    pNum=key, lower=value[0], upper=value[1]))
 
             file.write("# SYSTEM_CONSTRAINTS_END\n\n")
 
@@ -181,7 +191,8 @@ class BoundaryValueTestSeviceClass:
 
         file.write("# ENTITY_BEGIN\n")
         file.write("# ENTITY_ID:{entityID}\n".format(entityID=entityID))
-        file.write("# ENTITY_DESCRIPTION: {description}\n".format(description=description))
+        file.write("# ENTITY_DESCRIPTION: {description}\n".format(
+            description=description))
         parameter_string = ""
         for key, value in values.items():
             parameter_string += "{pNum}={value},".format(pNum=key, value=value)
@@ -191,15 +202,15 @@ class BoundaryValueTestSeviceClass:
 
     def __runSolver(self):
         #"python main.pyc -m 1 -s solverUsageBased -i ./sampleInputFiles/usageBasedStudy.inFile"
-        #python main.pyc -m 1 -s solverUsageBased -i ./sampleInputFiles/usageBasedStudy.inFile
-        #python main.pyc -m 1 -s solverOrderBased -i ./sampleInputFiles/orderBaseStudy.inFile
-        #python main.pyc -m 1 -s solverStructureBased -i ./sampleInputFiles/structureBaseStudy.inFile
-        #python main.pyc -m 1 -s solverStructureBased -i ./InputFiles/test-structure.inFile
-        command = ["python", "main.pyc", "-m", "1", "-s", "solverUsageBased", "-i", self.input_filename]
+        # python main.pyc -m 1 -s solverUsageBased -i ./sampleInputFiles/usageBasedStudy.inFile
+        # python main.pyc -m 1 -s solverOrderBased -i ./sampleInputFiles/orderBaseStudy.inFile
+        # python main.pyc -m 1 -s solverStructureBased -i ./sampleInputFiles/structureBaseStudy.inFile
+        # python main.pyc -m 1 -s solverStructureBased -i ./InputFiles/test-structure.inFile
+        command = ["python", "main.pyc", "-m", "1", "-s",
+                   "solverUsageBased", "-i", self.input_filename]
         process = subprocess.run(command, stdout=subprocess.PIPE)
         return process.returncode
-        #print(process.stdout)
-
+        # print(process.stdout)
 
 
 sample_test_space = {
