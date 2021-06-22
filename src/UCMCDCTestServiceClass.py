@@ -5,7 +5,7 @@ import subprocess
 import json
 from typing import no_type_check_decorator
 import re
-from helper import Conversion
+from helper2 import Conversion
 
 # sample = "(o1&o2|o3&-hello)&(ma|(asa7&asa1))"
 # prog = re.compile("[^\(\)\&\|-]+")
@@ -15,9 +15,9 @@ from helper import Conversion
 
 class UCMCDCTestServiceClass:
 
-    OPERATORS = {'&', '|', '-'}
+    OPERATORS = {'&', '|', '!'}
     PRIORITY = {
-        '-':2,
+        '!':2,
         '&':1,
         '|':1,
         '(':0,
@@ -26,14 +26,14 @@ class UCMCDCTestServiceClass:
     Converter = Conversion(OPERATORS, PRIORITY)
 
     def __init__(self, request_name, test_space):
-        self.input_filename = "./InputFiles/" + \
+        self.input_filename = "./src/InputFiles/" + \
             request_name + "_UMCDCTestInput.inFile"
         self.test_space = test_space
         self.entities = []
-        self.matcher = re.compile("[^\(\)\&\|-]+")
+        self.matcher = re.compile("[^\(\)\&\|\!-]+")
 
     def getTestSet(self):
-        print("FUNCTION: getTestSet")
+        #print("FUNCTION: getTestSet")
 
         self.createTestSet()
         return self.__parseTestSet()
@@ -97,12 +97,12 @@ class UCMCDCTestServiceClass:
         return self.entities
 
     def createEntites(self):
-        for func_str in self.test_space['functions']:
+        for func_str in self.test_space['decisions']:
             options = self.matcher.findall(func_str)
             
             for option in options:
                 pos_converted_function = self.Converter.infix_2_prefix(func_str)
-                neg_converted_function = self.Converter.infix_2_prefix(func_str.replace(option, ('-'+option)))
+                neg_converted_function = self.Converter.infix_2_prefix(func_str.replace(option, ('(! '+ option +')'  )))
 
                 optionID = self.test_space['options'].index(option)
                 print("CF: ", pos_converted_function)
@@ -187,10 +187,10 @@ sample_MCDC_test_space = {
     ]
 }
 
-sample_MCDC_test_space = {
+MCDC_test_space = {
 
     "options": ["o1", "o2", "o3"],
-    "functions": [
+    "decisions": [
         "(o1&o2&o3)"
     ]
 }
@@ -198,7 +198,7 @@ sample_MCDC_test_space = {
 sample_MCDC_test_space = {
 
     "options": ["o1", "o2", "o3"],
-    "functions": [
+    "decisions": [
         "(o1&o2&o3)",
         "(o1|(o2&o3))"
     ]
@@ -206,6 +206,6 @@ sample_MCDC_test_space = {
 
 if __name__ == "__main__":
     print("HEllo")
-    test = UCMCDCTestServiceClass("giray", sample_MCDC_test_space)
+    test = UCMCDCTestServiceClass("giray", MCDC_test_space)
     result = test.getTestSet()
     print(result)

@@ -5,3 +5,4 @@ ucitObject
 *.pdf
 .DS_Store
 temp
+models/

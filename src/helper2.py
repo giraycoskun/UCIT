@@ -72,6 +72,7 @@ class Conversion:
         formula = self.__replaceRegular2PythonOperators(formula)
         print("1", formula)
         parser = Parser()
+        #temp = parser.parse(formula)
         formula = parser.parse(formula).toString()
         print("2", formula)
         formula = self.__replacePython2RegularOperators(formula)
@@ -201,9 +202,9 @@ def removeInvalidParenthesis(str):
 
 if __name__ == '__main__':
 
-    OPERATORS = {'&', '|', '-'}
+    OPERATORS = {'&', '|', '!'}
     PRIORITY = {
-        '-':2,
+        '!':2,
         '&':1,
         '|':1,
         '(':0,

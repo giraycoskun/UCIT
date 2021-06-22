@@ -8,7 +8,7 @@ class Conversion:
     REPLACE_MAP = {
             '&': 'and',
             '|': 'or',
-            '-': 'not'
+            '!': 'not'
     }
 
     def __init__(self, OPERATORS, PRIORITY={}):

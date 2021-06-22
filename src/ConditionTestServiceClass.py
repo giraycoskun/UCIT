@@ -23,11 +23,11 @@ class ConditionTestServiceClass:
     converter = Conversion(OPERATORS, PRIORITY)
 
     def __init__(self, request_name, test_space):
-        self.input_filename = "./InputFiles/" + request_name + "_ConditonBasedTestInput.inFile"
+        self.input_filename = "./src/InputFiles/" + request_name + "_ConditonBasedTestInput.inFile"
         self.test_space = test_space
         self.entities = []
         self.options = []
-        self.matcher = re.compile("[\|\&!]")
+        self.matcher = re.compile("[\|\&\!)(]")
         #self.matcher = re.compile("[^\(\)\&\|-]+")
     
     def getTestSet(self):
@@ -81,15 +81,15 @@ class ConditionTestServiceClass:
         return self.entities
 
     def createEntites(self):
-        for func_str in self.test_space['conditions']:
+        for func_str in self.test_space['decisions']:
             options = self.matcher.split(func_str)
-            options = list(filter(lambda option: option not in {'&', '|', '!', ''}, options))
+            options = list(filter(lambda option: option not in {'&', '|', '!', '(', ')', ''}, options))
             
             for option in options:
                 if option not in self.options:
                     self.options.append(option)
                 pos_converted_function = self.converter.infix_2_prefix(func_str)
-                neg_converted_function = self.converter.infix_2_prefix(func_str.replace(option, ('!'+option)))
+                neg_converted_function = self.converter.infix_2_prefix(func_str.replace(option, ('(!'+option +')')))
                 
                 pos_func = self.converter.formatSugarOps(pos_converted_function)
                 neg_func = self.converter.formatSugarOps(neg_converted_function)
@@ -139,7 +139,7 @@ class ConditionTestServiceClass:
         return process.returncode
 
 test_space = {
-        "conditions":[
+        "decisions":[
             "(a<b)|(c<d)&!x",
         ],
 
