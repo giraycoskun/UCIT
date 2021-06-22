@@ -31,7 +31,7 @@ class ConditionTestServiceClass:
         #self.matcher = re.compile("[^\(\)\&\|-]+")
     
     def getTestSet(self):
-        print("FUNCTION: getTestSet")
+        #print("FUNCTION: getTestSet")
 
         self.createTestSet()
         return self.__parseTestSet()
@@ -53,7 +53,7 @@ class ConditionTestServiceClass:
         return test
     
     def __parseTestSet(self):
-        print("FUNCTION: parseTestCases")
+        #print("FUNCTION: parseTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
@@ -126,7 +126,7 @@ class ConditionTestServiceClass:
         file.write("# ENTITY_BEGIN\n")
         file.write("# ENTITY_ID:{entityID}\n".format(entityID=entityID))
         file.write("# ENTITY_DESCRIPTION: {description}\n".format(description=description))
-        print("\nENTITY: ", entity)
+        #print("\nENTITY: ", entity)
         file.write(entity)
         file.write("\n")
         file.write("# ENTITY_END\n\n")

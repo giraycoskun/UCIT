@@ -58,7 +58,7 @@ class UCMCDCTestServiceClass:
 
     # Parser
     def __parseTestSet(self):
-        print("FUNCTION: parseTestCases")
+        #print("FUNCTION: parseTestCases")
         output_path = "./ucitObject/"
         path = walk(output_path)
         test_cases = dict()
@@ -83,8 +83,8 @@ class UCMCDCTestServiceClass:
                             key = "TEST CASE: " + str(count)
                             count += 1
                             test_cases[key] = test
-                        else:
-                            print("duplicate")
+                        #else:
+                            #print("duplicate")
 
         return test_cases
 
@@ -104,7 +104,7 @@ class UCMCDCTestServiceClass:
                 neg_converted_function = self.Converter.infix_2_prefix(func_str.replace(option, ('(! '+ option +')'  )))
 
                 optionID = self.test_space['options'].index(option)
-                print("CF: ", pos_converted_function)
+                #print("CF: ", pos_converted_function)
 
                 pos_entity = self.Converter.formatSugarOps(
                     pos_converted_function)
@@ -146,7 +146,7 @@ class UCMCDCTestServiceClass:
         file.write("# ENTITY_ID:{entityID}\n".format(entityID=entityID))
         file.write("# ENTITY_DESCRIPTION: {description}\n".format(
             description=description))
-        print("\nENTITY: ", entity)
+        #print("\nENTITY: ", entity)
         file.write(entity)
         file.write("\n")
         file.write("# ENTITY_END\n\n")
@@ -210,7 +210,7 @@ sample_MCDC_test_space = {
 }
 
 if __name__ == "__main__":
-    print("HEllo")
+    #print("HEllo")
     test = UCMCDCTestServiceClass("giray", MCDC_test_space)
     result = test.getTestSet()
-    print(result)
+    #print(result)

@@ -6,16 +6,18 @@ import ConditionTestServiceClass as ConditionTestClass
 
 import json
 
+object_name = "mpsolve"
+
 ##INPUT TEST SPACE
 dir_name = "./src/InputObjects/"
-object_name = "dia"
+
 filename = dir_name + object_name + ".json"
 
 with open(filename, 'r') as fp:
     test_space = json.load(fp)
 
 
-'''
+
 #UC-MCDC
 test_service = UCMCDC.UCMCDCTestServiceClass(object_name, test_space)
 result = test_service.getTestSet()
@@ -23,11 +25,11 @@ result = test_service.getTestSet()
 print(result)
 
 dir_name = "./src/OutputObjects/"
-object_name = "dia"
+#object_name = "dia"
 filename = dir_name + object_name + "_UCMCDC_result.json"
 with open(filename, 'w') as fp:
     json.dump(result, fp)
-'''
+
 
 
 #MCDC Condition
@@ -38,7 +40,7 @@ result = test_service.getTestSet()
 print(result)
 
 dir_name = "./src/OutputObjects/"
-object_name = "dia"
+#object_name = "dia"
 filename = dir_name + object_name + "_MCDC_result.json"
 with open(filename, 'w') as fp:
     json.dump(result, fp)

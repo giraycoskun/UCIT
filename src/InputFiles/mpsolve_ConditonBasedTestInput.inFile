@@ -1,0 +1,570 @@
+# NUMBER_OF_ENTITIES:92
+# SYSTEM_CONSTRAINTS_BEGIN
+(bool o1)
+(bool o2)
+(bool o3)
+(bool o4)
+(bool o5)
+(bool o6)
+(bool o7)
+(bool o8)
+(bool o9)
+(bool o10)
+(bool o11)
+(bool o12)
+(bool o13)
+(bool o14)
+# SYSTEM_CONSTRAINTS_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:0
+# ENTITY_DESCRIPTION: Covering ( && (! o9 ) (! (! (! o9 ))) )
+( && (! o9 ) (! (! (! o9 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:1
+# ENTITY_DESCRIPTION: Covering ( && (! (! o9 )) (! (! o9 )) )
+( && (! (! o9 )) (! (! o9 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:2
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o2 )) (! (&& (! (! o9 ))(! o2 ))) )
+( && (&& (! o9 )(! o2 )) (! (&& (! (! o9 ))(! o2 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:3
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o2 )) (! (&& (! o9 )(! o2 ))) )
+( && (&& (! (! o9 ))(! o2 )) (! (&& (! o9 )(! o2 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:4
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o2 )) (! (&& (! o9 )(! (! o2 )))) )
+( && (&& (! o9 )(! o2 )) (! (&& (! o9 )(! (! o2 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:5
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o2 ))) (! (&& (! o9 )(! o2 ))) )
+( && (&& (! o9 )(! (! o2 ))) (! (&& (! o9 )(! o2 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:6
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o10 )) (! (&& (! (! o9 ))(! o10 ))) )
+( && (&& (! o9 )(! o10 )) (! (&& (! (! o9 ))(! o10 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:7
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o10 )) (! (&& (! o9 )(! o10 ))) )
+( && (&& (! (! o9 ))(! o10 )) (! (&& (! o9 )(! o10 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:8
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o10 )) (! (&& (! o9 )(! (! o10 )))) )
+( && (&& (! o9 )(! o10 )) (! (&& (! o9 )(! (! o10 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:9
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o10 ))) (! (&& (! o9 )(! o10 ))) )
+( && (&& (! o9 )(! (! o10 ))) (! (&& (! o9 )(! o10 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:10
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o13 )) (! (&& (! (! o9 ))(! o13 ))) )
+( && (&& (! o9 )(! o13 )) (! (&& (! (! o9 ))(! o13 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:11
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o13 )) (! (&& (! o9 )(! o13 ))) )
+( && (&& (! (! o9 ))(! o13 )) (! (&& (! o9 )(! o13 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:12
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o13 )) (! (&& (! o9 )(! (! o13 )))) )
+( && (&& (! o9 )(! o13 )) (! (&& (! o9 )(! (! o13 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:13
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o13 ))) (! (&& (! o9 )(! o13 ))) )
+( && (&& (! o9 )(! (! o13 ))) (! (&& (! o9 )(! o13 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:14
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o6 )) (! (&& (! (! o9 ))(! o6 ))) )
+( && (&& (! o9 )(! o6 )) (! (&& (! (! o9 ))(! o6 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:15
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o6 )) (! (&& (! o9 )(! o6 ))) )
+( && (&& (! (! o9 ))(! o6 )) (! (&& (! o9 )(! o6 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:16
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o6 )) (! (&& (! o9 )(! (! o6 )))) )
+( && (&& (! o9 )(! o6 )) (! (&& (! o9 )(! (! o6 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:17
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o6 ))) (! (&& (! o9 )(! o6 ))) )
+( && (&& (! o9 )(! (! o6 ))) (! (&& (! o9 )(! o6 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:18
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o11 )) (! (&& (! (! o9 ))(! o11 ))) )
+( && (&& (! o9 )(! o11 )) (! (&& (! (! o9 ))(! o11 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:19
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o11 )) (! (&& (! o9 )(! o11 ))) )
+( && (&& (! (! o9 ))(! o11 )) (! (&& (! o9 )(! o11 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:20
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o11 )) (! (&& (! o9 )(! (! o11 )))) )
+( && (&& (! o9 )(! o11 )) (! (&& (! o9 )(! (! o11 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:21
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o11 ))) (! (&& (! o9 )(! o11 ))) )
+( && (&& (! o9 )(! (! o11 ))) (! (&& (! o9 )(! o11 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:22
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o7 )) (! (&& (! (! o9 ))(! o7 ))) )
+( && (&& (! o9 )(! o7 )) (! (&& (! (! o9 ))(! o7 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:23
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o9 ))(! o7 )) (! (&& (! o9 )(! o7 ))) )
+( && (&& (! (! o9 ))(! o7 )) (! (&& (! o9 )(! o7 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:24
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! o7 )) (! (&& (! o9 )(! (! o7 )))) )
+( && (&& (! o9 )(! o7 )) (! (&& (! o9 )(! (! o7 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:25
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o9 )(! (! o7 ))) (! (&& (! o9 )(! o7 ))) )
+( && (&& (! o9 )(! (! o7 ))) (! (&& (! o9 )(! o7 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:26
+# ENTITY_DESCRIPTION: Covering ( && (! o8 ) (! (! (! o8 ))) )
+( && (! o8 ) (! (! (! o8 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:27
+# ENTITY_DESCRIPTION: Covering ( && (! (! o8 )) (! (! o8 )) )
+( && (! (! o8 )) (! (! o8 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:28
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! (! o8 ))(! o3 ))) )
+( && (&& (! o8 )(! o3 )) (! (&& (! (! o8 ))(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:29
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))(! o3 )) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! (! o8 ))(! o3 )) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:30
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! o8 )(! (! o3 )))) )
+( && (&& (! o8 )(! o3 )) (! (&& (! o8 )(! (! o3 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:31
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! (! o3 ))) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! o8 )(! (! o3 ))) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:32
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! (! o8 ))(! o14 ))) )
+( && (&& (! o8 )(! o14 )) (! (&& (! (! o8 ))(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:33
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))(! o14 )) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! (! o8 ))(! o14 )) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:34
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! o8 )(! (! o14 )))) )
+( && (&& (! o8 )(! o14 )) (! (&& (! o8 )(! (! o14 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:35
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! (! o14 ))) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! o8 )(! (! o14 ))) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:36
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o12 )) (! (&& (! (! o8 ))(! o12 ))) )
+( && (&& (! o8 )(! o12 )) (! (&& (! (! o8 ))(! o12 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:37
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))(! o12 )) (! (&& (! o8 )(! o12 ))) )
+( && (&& (! (! o8 ))(! o12 )) (! (&& (! o8 )(! o12 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:38
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o12 )) (! (&& (! o8 )(! (! o12 )))) )
+( && (&& (! o8 )(! o12 )) (! (&& (! o8 )(! (! o12 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:39
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! (! o12 ))) (! (&& (! o8 )(! o12 ))) )
+( && (&& (! o8 )(! (! o12 ))) (! (&& (! o8 )(! o12 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:40
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o12 ) (! (&& (! (! o8 ))o12 )) )
+( && (&& (! o8 )o12 ) (! (&& (! (! o8 ))o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:41
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o12 ) (! (&& (! o8 )o12 )) )
+( && (&& (! (! o8 ))o12 ) (! (&& (! o8 )o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:42
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o12 ) (! (&& (! o8 )(! o12 ))) )
+( && (&& (! o8 )o12 ) (! (&& (! o8 )(! o12 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:43
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o12 )) (! (&& (! o8 )o12 )) )
+( && (&& (! o8 )(! o12 )) (! (&& (! o8 )o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:44
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:45
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:46
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:47
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:48
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:49
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:50
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:51
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:52
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:53
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:54
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:55
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:56
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:57
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:58
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:59
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:60
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o12 ) (! (&& (! (! o8 ))o12 )) )
+( && (&& (! o8 )o12 ) (! (&& (! (! o8 ))o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:61
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o12 ) (! (&& (! o8 )o12 )) )
+( && (&& (! (! o8 ))o12 ) (! (&& (! o8 )o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:62
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o12 ) (! (&& (! o8 )(! o12 ))) )
+( && (&& (! o8 )o12 ) (! (&& (! o8 )(! o12 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:63
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o12 )) (! (&& (! o8 )o12 )) )
+( && (&& (! o8 )(! o12 )) (! (&& (! o8 )o12 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:64
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:65
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:66
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:67
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:68
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:69
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:70
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:71
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:72
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+( && (&& (! o8 )o14 ) (! (&& (! (! o8 ))o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:73
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+( && (&& (! (! o8 ))o14 ) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:74
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+( && (&& (! o8 )o14 ) (! (&& (! o8 )(! o14 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:75
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+( && (&& (! o8 )(! o14 )) (! (&& (! o8 )o14 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:76
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+( && (&& (! o8 )o3 ) (! (&& (! (! o8 ))o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:77
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+( && (&& (! (! o8 ))o3 ) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:78
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+( && (&& (! o8 )o3 ) (! (&& (! o8 )(! o3 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:79
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+( && (&& (! o8 )(! o3 )) (! (&& (! o8 )o3 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:80
+# ENTITY_DESCRIPTION: Covering ( && (! o1 ) (! (! (! o1 ))) )
+( && (! o1 ) (! (! (! o1 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:81
+# ENTITY_DESCRIPTION: Covering ( && (! (! o1 )) (! (! o1 )) )
+( && (! (! o1 )) (! (! o1 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:82
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o1 )(! o8 )) (! (&& (! (! o1 ))(! o8 ))) )
+( && (&& (! o1 )(! o8 )) (! (&& (! (! o1 ))(! o8 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:83
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o1 ))(! o8 )) (! (&& (! o1 )(! o8 ))) )
+( && (&& (! (! o1 ))(! o8 )) (! (&& (! o1 )(! o8 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:84
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o1 )(! o8 )) (! (&& (! o1 )(! (! o8 )))) )
+( && (&& (! o1 )(! o8 )) (! (&& (! o1 )(! (! o8 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:85
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o1 )(! (! o8 ))) (! (&& (! o1 )(! o8 ))) )
+( && (&& (! o1 )(! (! o8 ))) (! (&& (! o1 )(! o8 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:86
+# ENTITY_DESCRIPTION: Covering ( && (! o4 ) (! (! (! o4 ))) )
+( && (! o4 ) (! (! (! o4 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:87
+# ENTITY_DESCRIPTION: Covering ( && (! (! o4 )) (! (! o4 )) )
+( && (! (! o4 )) (! (! o4 )) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:88
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o4 )(! o5 )) (! (&& (! (! o4 ))(! o5 ))) )
+( && (&& (! o4 )(! o5 )) (! (&& (! (! o4 ))(! o5 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:89
+# ENTITY_DESCRIPTION: Covering ( && (&& (! (! o4 ))(! o5 )) (! (&& (! o4 )(! o5 ))) )
+( && (&& (! (! o4 ))(! o5 )) (! (&& (! o4 )(! o5 ))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:90
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o4 )(! o5 )) (! (&& (! o4 )(! (! o5 )))) )
+( && (&& (! o4 )(! o5 )) (! (&& (! o4 )(! (! o5 )))) )
+# ENTITY_END
+
+# ENTITY_BEGIN
+# ENTITY_ID:91
+# ENTITY_DESCRIPTION: Covering ( && (&& (! o4 )(! (! o5 ))) (! (&& (! o4 )(! o5 ))) )
+( && (&& (! o4 )(! (! o5 ))) (! (&& (! o4 )(! o5 ))) )
+# ENTITY_END
+
