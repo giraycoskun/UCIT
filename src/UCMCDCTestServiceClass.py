@@ -3,7 +3,6 @@ from random import randint
 from os import getcwd, walk
 import subprocess
 import json
-from typing import no_type_check_decorator
 import re
 from helper2 import Conversion
 
@@ -37,7 +36,7 @@ class UCMCDCTestServiceClass:
 
         self.createTestSet()
         return self.__parseTestSet()
-    
+
     def __generateUCMCDCTestOutput(self, lines):
         #print("FUNCTION: __generateUCMCDCTestOutputestSet")
         optionID = int(lines[0].split()[-1][:-1])
@@ -50,7 +49,7 @@ class UCMCDCTestServiceClass:
             value = value[0].upper() + value[1:]
             if(option == self.test_space['options'][optionID]):
                 test1[option] = eval(value)
-                test2[option] = eval('not '+ value)
+                test2[option] = eval('not ' + value)
             else:
                 test1[option] = eval(value)
                 test2[option] = eval(value)
@@ -67,12 +66,12 @@ class UCMCDCTestServiceClass:
         for _, _, files in path:
             count = 1
             for file in files:
-                #print(file)
+                # print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
 
                     index = 0
-                    while(lines[index] !=  "# TEST CASE CONSTRAINTS\n" ):
+                    while(lines[index] != "# TEST CASE CONSTRAINTS\n"):
                         index += 1
                     tests = self.__generateUCMCDCTestOutput(lines[index+1:])
                     for test in tests:
@@ -81,12 +80,12 @@ class UCMCDCTestServiceClass:
                             test_string = test_string + str(key) + str(value)
                         if test_string not in test_set:
                             test_set.add(test_string)
-                            key = "TEST CASE: "+ str(count)
+                            key = "TEST CASE: " + str(count)
                             count += 1
                             test_cases[key] = test
                         else:
                             print("duplicate")
-                    
+
         return test_cases
 
     def createTestSet(self):
@@ -99,23 +98,27 @@ class UCMCDCTestServiceClass:
     def createEntites(self):
         for func_str in self.test_space['decisions']:
             options = self.matcher.findall(func_str)
-            
+
             for option in options:
                 pos_converted_function = self.Converter.infix_2_prefix(func_str)
                 neg_converted_function = self.Converter.infix_2_prefix(func_str.replace(option, ('(! '+ option +')'  )))
 
                 optionID = self.test_space['options'].index(option)
                 print("CF: ", pos_converted_function)
-                
-                pos_entity = self.Converter.formatSugarOps(pos_converted_function)
-                neg_entity = self.Converter.formatSugarOps(neg_converted_function)
 
-                option_entity = ("\n( = optionID {optionID})".format(optionID=optionID))
-                entity = "( && {pos} (! {neg}) ){op}".format(pos=pos_entity, neg=neg_entity, op=option_entity)
-                
+                pos_entity = self.Converter.formatSugarOps(
+                    pos_converted_function)
+                neg_entity = self.Converter.formatSugarOps(
+                    neg_converted_function)
+
+                option_entity = (
+                    "\n( = optionID {optionID})".format(optionID=optionID))
+                entity = "( && {pos} (! {neg}) ){op}".format(
+                    pos=pos_entity, neg=neg_entity, op=option_entity)
+
                 #print("ENTITY: ", pos_entity)
                 self.entities.append(entity)
-                #self.entities.append(neg_entity)
+                # self.entities.append(neg_entity)
 
     def createInputFile(self):
         with open(self.input_filename, 'w') as file:
@@ -129,7 +132,8 @@ class UCMCDCTestServiceClass:
             entity_num=entity_num))
         file.write("# SYSTEM_CONSTRAINTS_BEGIN")
 
-        file.write("\n(int optionID 0 {entity_num} )".format(entity_num=entity_num) )
+        file.write("\n(int optionID 0 {entity_num} )".format(
+            entity_num=entity_num))
 
         for option in self.test_space['options']:
             file.write('\n(bool ' + option + ')')
@@ -140,7 +144,8 @@ class UCMCDCTestServiceClass:
         description = 'Covering ' + entity.split('\n')[0]
         file.write("# ENTITY_BEGIN\n")
         file.write("# ENTITY_ID:{entityID}\n".format(entityID=entityID))
-        file.write("# ENTITY_DESCRIPTION: {description}\n".format(description=description))
+        file.write("# ENTITY_DESCRIPTION: {description}\n".format(
+            description=description))
         print("\nENTITY: ", entity)
         file.write(entity)
         file.write("\n")

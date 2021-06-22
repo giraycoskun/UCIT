@@ -3,7 +3,6 @@ from random import randint
 from os import getcwd, walk
 import subprocess
 import json
-from typing import no_type_check_decorator
 import re
 
 # sample = "(o1&o2|o3&-hello)&(ma|(asa7&asa1))"
@@ -36,11 +35,11 @@ class MCDCTestServiceClass:
         for _, _, files in path:
             count = 1
             for file in files:
-                #print(file)
+                # print(file)
                 with open(output_path+file, "r") as file:
                     lines = file.readlines()
                     check = False
-                    key = "TEST CASE: "+ str(count)
+                    key = "TEST CASE: " + str(count)
                     count += 1
                     test_cases[key] = {}
                     for line in lines:
@@ -67,9 +66,13 @@ class MCDCTestServiceClass:
             for option in options:
                 neg_func = func_str.replace(option, ('-'+option))
                 pos_func = func_str
-                bool_diff = '('+'('+pos_func+'&'+'('+ '-' + neg_func +')'+')'+'|'+ '('+ '('+ '-'+pos_func +')' '&'+ neg_func +')'+')'
-                pos_entity = pos_func + '&' + '(' + '-' + neg_func + ')' + '&' + bool_diff
-                neg_entity = '('+'-'+pos_func+')' + '&' + neg_func + '&' + bool_diff
+                bool_diff = '('+'('+pos_func+'&'+'(' + '-' + neg_func + ')'+')' + \
+                    '|' + '(' + '(' + '-'+pos_func + ')' '&' + \
+                            neg_func + ')'+')'
+                pos_entity = pos_func + '&' + \
+                    '(' + '-' + neg_func + ')' + '&' + bool_diff
+                neg_entity = '('+'-'+pos_func+')' + '&' + \
+                    neg_func + '&' + bool_diff
 
                 self.entities.append(pos_entity)
                 self.entities.append(neg_entity)
