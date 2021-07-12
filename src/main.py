@@ -5,7 +5,7 @@ import UCMCDCTestServiceClass as UCMCDC
 import ConditionTestServiceClass as ConditionTestClass
 
 import json
-
+'''
 object_name = "mpsolve"
 
 ##INPUT TEST SPACE
@@ -45,7 +45,7 @@ filename = dir_name + object_name + "_MCDC_result.json"
 with open(filename, 'w') as fp:
     json.dump(result, fp)
 
-
+'''
 '''
 
 boundary_test_case = {
@@ -148,4 +148,43 @@ condition_test_space = {
 print(result)
 with open('./src/result.json', 'w') as fp:
     json.dump(result, fp)
+'''
+
+test_space = {
+
+    "options": ["o1", "o2", "o3"],
+    "decisions": [
+        "(o1|(o2&o3))",
+        
+    ],
+    "numbers":{}
+}
+
+test_space = {
+
+    "options": ["o1", "o2", "o3", "o4", "o5"],
+    "decisions": [
+        "(o1&o2)",
+        "(o1&o2)&(o3|o4)",
+        "(!(o1&o2))&o5"  
+    ],
+    "numbers":{}
+}
+
+
+#testService = ConditionTestClass.ConditionTestServiceClass("test12", test_space)
+testService = UCMCDC.UCMCDCTestServiceClass("test1234", test_space)
+
+result = testService.getTestSet()
+print(result)
+
+'''
+if (o1&o2)
+{
+    if(o3||o4)
+
+    else(
+        if(o5)
+    )
+}
 '''

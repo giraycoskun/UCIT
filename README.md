@@ -54,3 +54,6 @@ All constructed with a unique label and test space.
 
 - Hayhurst Kelly J., Veerhusen Dan S., Chilenski John J., and Rierson Leanna K. 2001. A Practical Tutorial on Modified Condition/Decision Coverage. Technical Report. NASA Langley Technical Report Server.
   (https://shemesh.larc.nasa.gov/fm/papers/Hayhurst-2001-tm210876-MCDC.pdf)
+
+
+- https://github.com/sahutkarsh/NSGA-II/blob/master/NSGA-II.ipynb
