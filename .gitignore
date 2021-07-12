@@ -20,3 +20,5 @@ experimentalResults/
 experimentalResults/*
 ./src/InputFiles/
 ./src/InputFiles/*
+
+InputFiles/
