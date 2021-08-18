@@ -120,12 +120,12 @@ class MaskingMCDCTest:
         command = ["python", "tool.pyc", "-m", "1", "-s",
                    "solverOrderBased", "-i", input_name]
         with open("stdout.txt","wb") as out, open("stderr.txt","wb") as err:
-            process = Popen(command, stdout=PIPE, stderr=PIPE) #process = subprocess.run(command, stdout=subprocess.PIPE)
+            process = Popen(command, stdout=out, stderr=err).wait() #process = subprocess.run(command, stdout=subprocess.PIPE)
         chdir(current_directory)
         log.debug(getcwd)
-        if(process.returncode != 0):
+        if(process != 0):
             log.warning("U-CIT FAILED generating test cases")
-        return process.returncode
+        return process
 
     def __parseTestSet(self):
         output_path = "./src/tool/ucitObject/"

@@ -8,10 +8,16 @@ temp/
 temp.csp
 
 models/
+models copy/
 
-seed-version-UCIT/
-seed-version-UCIT/*
+/src/MaskingMCDC-Input-Tool-Files
+/src/MaskingMCDC-Output-Files
+/src/MCDC-Input-Model-Files
+/src/Old-Version-Classes
+/src/TestResults
+
 seed-version-UCIT.zip
+
 
 
 *.inFile

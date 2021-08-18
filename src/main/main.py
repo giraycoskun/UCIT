@@ -63,7 +63,7 @@ for root, dirs, files in os.walk(MODEL_PATH, topdown=False):
             with open(output_filename, 'w') as output_file:
                 json.dump(TEST_SPACE, output_file, indent = 8)
 
-            
+            log.info("TEST ENTITY GENERATION STARTED")
             tester = MaskingMCDCTest(model_name, TEST_SPACE)
             tests = tester.getTestSet()
             tester.dumpTests(tests)
@@ -78,13 +78,12 @@ for root, dirs, files in os.walk(MODEL_PATH, topdown=False):
 
             try:
                 command = ["mv", UCIT_OBJECT_DIRECTORY, result_dir]
-                process = Popen(command, stdout=PIPE, stderr=PIPE)
+                process = Popen(command, stdout=PIPE, stderr=PIPE).wait()
 
                 command = ["mv", TEST_RESULT_STDOUT_FILE, TEST_RESULT_STDERR_FILE, result_dir]
-                process = Popen(command, stdout=PIPE, stderr=sys.o)
+                process = Popen(command, stdout=PIPE, stderr=PIPE).wait()
 
                 log.info("SAVING RESULTS SUCCESSFUL!!")
 
             except:
                 log.info("SAVING RESULTS FAILED!!")
-    break
