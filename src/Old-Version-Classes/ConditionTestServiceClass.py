@@ -156,4 +156,4 @@ test_space = {
 if __name__ == '__main__':
     formula = "(a < c+b) or (c<d) and x"
     test = ConditionTestServiceClass("giray", test_space)
-    test.parseTestSet()
+    test.createTestSet()

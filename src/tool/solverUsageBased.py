@@ -2,8 +2,6 @@ from random import randint
 
 
 def _solve(systemConstraints, entityConstraints):
-    #print("SYSTEM: ", systemConstraints)
-    #print("ENTITY: ",entityConstraints)
     domains = {}
     testCase = {}
     for sc in systemConstraints:
@@ -24,7 +22,6 @@ def _solve(systemConstraints, entityConstraints):
         if testCase[option] == "*":
             testCase[option] = str(randint(domains[option][0], domains[option][1]))
     solution = [opt + "=" + testCase[opt] for opt in testCase]
-    #print("SOLUTION:", solution)
     return solution
     
         

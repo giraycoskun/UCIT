@@ -42,6 +42,11 @@ For each approach a TestService Class has been implemented with a getTestSet met
 
 All constructed with a unique label and test space.
 
+## Documentation
+
+To host documentation run in docs/build/html
+python -m SimpleHTTPServer
+
 ## References
 
 - H. Mercan, A. Javeed and C. Yilmaz, "Flexible Combinatorial Interaction Testing," in IEEE Transactions on Software Engineering, doi: 10.1109/TSE.2020.3010317. (https://ieeexplore.ieee.org/document/9144457)

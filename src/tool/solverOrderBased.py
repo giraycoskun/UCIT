@@ -3,8 +3,6 @@ from os import popen
 SUGAR_CMD = "sugar"
 
 def _solve(systemConstraints, entityConstraints):
-    #print("SYSTEM: ", systemConstraints)
-    #print("ENTITY: ",entityConstraints)
     outFile = open("temp.csp", "w")
     for constraint in systemConstraints + entityConstraints:
         outFile.write(constraint + "\n")
@@ -20,9 +18,16 @@ def _solve(systemConstraints, entityConstraints):
     for line in output[1:-2]:
         line = line.split()
         solution.append("( = " + line[1] + " " + line[2] + ")")
-    #print("SOLUTION:", solution)
     return solution
     
 
 def _satisfiable(systemConstraints, entityConstraints):
     return _solve(systemConstraints, entityConstraints) != []
+
+
+
+
+
+
+
+        

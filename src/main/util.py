@@ -75,9 +75,11 @@ class Conversion:
         pattern = ""
         #ops = {'(', ')'}
         #ops = ops.union(self.OPERATORS)
-        for element in self.OPERATORS:
+        pattern_elements = self.OPERATORS.union(self.PARANTHESIS)
+        for element in pattern_elements:
             pattern = pattern + '\\' + element
         
+        pattern = pattern + ' '
         pattern = "[^" + pattern + "]+"
         matcher = re.compile(pattern)
         self.parameterPattern = pattern
@@ -117,7 +119,7 @@ class Conversion:
         for operator in self.OPERATORS:
             formula = formula.replace(operator, (operator+ ' '))
         for element in elements:
-            formula = formula.replace(element, (element+ ' '))
+            formula = formula.replace(element, (' ' + element))
         return formula
 
     def formatSugarOps(self, formula):

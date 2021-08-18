@@ -1,5 +1,5 @@
 from py_expression_eval import Parser
-from os import walk, getcwd
+from os import walk, getcwd, chdir
 from subprocess import Popen, PIPE
 import re
 from  util import Conversion
@@ -14,6 +14,9 @@ log.setLevel(log_level)
 
 util_logger = logging.getLogger('util')
 util_logger.setLevel(log_level)
+
+TOOL_DIRECTORY = "./src/tool/"
+UCIT_OBJECT_DIRECTORY = TOOL_DIRECTORY + "ucitObject/"
 
 class MaskingMCDCTest:
     OPERATORS = {'&', '|', '!', '<', '>', '+', '-', '*', '/'}
@@ -34,22 +37,19 @@ class MaskingMCDCTest:
     converter = Conversion(OPERATORS, PRIORITY)
 
     def __init__(self, request_name, test_space):
-        self.input_filename = "./src/MaskingMCDC-Input-Files/" + request_name + "_ConditonBasedTestInput.inFile"
+        self.input_filename = "./src/MaskingMCDC-Input-Tool-Files/" + request_name + "_ConditonBasedTestInput.inFile"
         self.output_filename = "./src/MaskingMCDC-Output-Files/" + request_name + "_ConditonBasedTestInput.outFile"
         self.test_space = test_space
         self.entities = []
         self.options = []
-        self.matcher = re.compile("[\|\&\!)(]")
+        self.matcher = re.compile("[\|\&\!)( ]")
 
     def getTestSet(self):
-        #print("FUNCTION: getTestSet")
-
         self.createTestSet()
         return self.__parseTestSet()
 
 
     def createTestSet(self):
-        #print("FUNCTION: createTestSet")
         self.createEntites()
         self.createInputFile()
         self.__runSolver()
@@ -57,10 +57,11 @@ class MaskingMCDCTest:
     
     def createEntites(self):
         for decision in self.test_space['decisions']:
+            log.debug(decision)
             function = decision[0]
             log.debug("Function: " + function)
             options = self.matcher.split(function)
-            options = list(filter(lambda option: option not in {'&', '|', '!', '(', ')', ''}, options))
+            options = list(filter(lambda option: option not in {'&', '|', '!', '(', ')', '', ' '}, options))
             func_str = ""
             for element in decision:
                 func_str = func_str + element + '&'
@@ -78,15 +79,14 @@ class MaskingMCDCTest:
 
                 pos_entity = "( && {pos} (! {neg}) )".format(pos=pos_func, neg=neg_func)
                 neg_entity = "( && {neg} (! {pos}) )".format(pos=pos_func, neg=neg_func)
-                #print("ENTITY: ", pos_entity)
-                self.entities.append(pos_entity)
-                self.entities.append(neg_entity)
+                self.entities.append((pos_entity, decision))
+                self.entities.append((neg_entity, decision))
 
     def createInputFile(self):
         with open(self.input_filename, 'w') as file:
             self.__writeHeader(file)
             for index, entity in enumerate(self.entities):
-                self.__writeEntity(file, entity, index)
+                self.__writeEntity(file, entity, index+1)
 
     def __writeHeader(self, file):
         entity_num = len(self.entities)
@@ -102,28 +102,33 @@ class MaskingMCDCTest:
 
         file.write("\n# SYSTEM_CONSTRAINTS_END\n\n")
 
-    def __writeEntity(self, file, entity, entityID, description=""):
-        description = 'Covering ' + entity.split('\n')[0]
+    def __writeEntity(self, file, entity, entityID):
+        description = 'Covering {}'.format(" ".join(entity[1]))
         file.write("# ENTITY_BEGIN\n")
         file.write("# ENTITY_ID:{entityID}\n".format(entityID=entityID))
         file.write("# ENTITY_DESCRIPTION: {description}\n".format(description=description))
-        #print("\nENTITY: ", entity)
-        file.write(entity)
+        file.write(entity[0])
         file.write("\n")
         file.write("# ENTITY_END\n\n")
 
     def __runSolver(self):
+        current_directory = getcwd()
+        chdir(TOOL_DIRECTORY)
+        log.debug(getcwd)
         # "python main.pyc -m 1 -s solverOrderBased -i ./sampleInputFiles/solverBased.inFile"
-        command = ["python", "main.pyc", "-m", "1", "-s",
-                   "solverOrderBased", "-i", self.input_filename]
-        #process = subprocess.run(command, stdout=subprocess.PIPE)
-        process = Popen(command, stdout=PIPE, stderr=PIPE)
-
+        input_name = "../../" + self.input_filename
+        command = ["python", "tool.pyc", "-m", "1", "-s",
+                   "solverOrderBased", "-i", input_name]
+        with open("stdout.txt","wb") as out, open("stderr.txt","wb") as err:
+            process = Popen(command, stdout=PIPE, stderr=PIPE) #process = subprocess.run(command, stdout=subprocess.PIPE)
+        chdir(current_directory)
+        log.debug(getcwd)
+        if(process.returncode != 0):
+            log.warning("U-CIT FAILED generating test cases")
         return process.returncode
 
     def __parseTestSet(self):
-        #print("FUNCTION: parseTestCases")
-        output_path = "./ucitObject/"
+        output_path = "./src/tool/ucitObject/"
         path = walk(output_path)
         test_cases = dict()
         for _, _, files in path:
@@ -139,11 +144,9 @@ class MaskingMCDCTest:
                     key = "TEST CASE: "+ str(count)
                     count += 1
                     test_cases[key] = self.__generateTestOutput(lines[index+1:])
-                    
         return test_cases
     
     def __generateTestOutput(self, lines):
-        #print("FUNCTION: __generateUCMCDCTestOutputestSet")
         test = dict()
         for line in lines:
             parsed = line.split()
@@ -167,9 +170,9 @@ if __name__ == '__main__':
         {
             "decisions":[
                 ["o1&o3", ],
-                ["o2", "o1&o3"],
+                ["o2", "!(o1&o3)"],
 
-                ["o3", ],
+                ["((o3))", ],
                 ["o4", "!o3"],
                 ["o2", "!o3", "o4"]
 
@@ -178,7 +181,31 @@ if __name__ == '__main__':
             "options": ["o1", "o2", "o3", "o4"],
             "numbers": {}
         }
-    tester = MaskingMCDCTest('test_g0', test_input_0)
+
+    test_input_1  = \
+        {
+            "decisions":[
+                ["o1&o3", ],
+                ["o2", "!(o1&o3)"],
+
+                ["((o3))", ],
+                ["o4", "!o3"],
+                ["o2", "!o3", "o4"],
+
+                ["a>b & c<d"]
+
+            ],
+
+            "options": ["o1", "o2", "o3", "o4"],
+            "numbers": {
+                            "a":[1, 20],
+                            "b":[1, 100],
+                            "c":[1, 20],
+                            "d":[1, 100]
+                        }
+        }
+        
+    tester = MaskingMCDCTest('test_g1', test_input_1)
     tests = tester.getTestSet()
     tester.dumpTests(tests)
     log.info("Tests Are Generated")
@@ -186,20 +213,23 @@ if __name__ == '__main__':
 
 '''
 test_input_0
+// v2; 1
     #if ((o1&o3)) {
-	    } else {
-	        if ((o2)) {
+	    } 
+    else {
+        if ((o2)) {
 
-	        } else {
-	        }
-	    }
-// v2; 3
-	    #if ((o3)) {
-	    } else {
-	        if ((o4)) {
-                if(o2){
+        } 
+        else {
+        }
+	}
+// v2; 2
+    #if ((o3)) {
+    } else {
+        if ((o4)) {
+            if(o2){
 
-                }
-	        }
-	    }
+            }
+        }
+    }
 '''
