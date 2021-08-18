@@ -31,4 +31,4 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 RUN pip3 install -r requirements_python3.txt
 
-ENTRYPOINT ["python3", "./src/main.py"]
+ENTRYPOINT ["python3", "./src/main/main.py"]
