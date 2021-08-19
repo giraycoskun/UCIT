@@ -71,7 +71,17 @@ class MaskingMCDCTest:
                 if option not in self.options:
                     self.options.append(option)
                 pos_converted_function = self.converter.infix_2_prefix(func_str)
-                neg_converted_function = self.converter.infix_2_prefix(func_str.replace(option, ('(!'+option +')')))
+                indexes = [i for i in range(len(func_str)) if func_str.startswith(option, i)]
+                res_index = -1
+                for index in indexes:
+                    try:
+                        if not(func_str[index + len(option)].isnumeric()):
+                            res_index = index
+                    except Exception:
+                        res_index = index
+                    break
+                func_str = func_str[:res_index] + func_str[res_index:].replace(option, '(!'+option +')', 1)
+                neg_converted_function = self.converter.infix_2_prefix(func_str)
                 
                 pos_func = self.converter.formatSugarOps(pos_converted_function)
                 neg_func = self.converter.formatSugarOps(neg_converted_function)
